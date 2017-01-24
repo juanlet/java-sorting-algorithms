@@ -13,7 +13,8 @@ public class Main {
 		 
 		 
 		 //array=sortManager.selectionSort(array);
-		 array=sortManager.bubbleSort(array); 
+		 //array=sortManager.bubbleSort(array);
+		 array=sortManager.insertionSort(array);
 	
 }
 
