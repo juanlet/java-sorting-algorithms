@@ -85,6 +85,9 @@ public class SortManager {
 			    	 if(array[j]<array[j-1]){
 			    		 swap(array,j-1,j);
 			  	         print(array);
+			    	 }else{
+			    		//si no fue menor a j-1 no va a ser menor a j-2 porque ese subset ya está ordenado 
+			    		break; 
 			    	 }
 									
 				 }
