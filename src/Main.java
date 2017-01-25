@@ -15,7 +15,7 @@ public class Main {
 		 //array=sortManager.bubbleSort(array);
 		 //array=sortManager.insertionSort(array);
 	
-		 searchManager.binarySearch(array2, 4);
+		 searchManager.binarySearch(array2, 1);
 		 
 }
 

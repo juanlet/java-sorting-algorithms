@@ -9,7 +9,7 @@ public class SearchManager {
 		
 		while(max>=min){
 			
-			int medium=(max+min)/2;
+			int medium=min+(max-min)/2;
 			numberOfChecks++;
 			
 			if(array[medium] == numberToSearch){
