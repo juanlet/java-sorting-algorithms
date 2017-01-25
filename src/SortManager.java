@@ -1,5 +1,5 @@
 public class SortManager {
-
+     //helpers
       private void swap(int[] array,int indexA, int indexB){
 
     	  int temp=array[indexA];
@@ -9,7 +9,7 @@ public class SortManager {
 
       }
 
-      private void print(int[] array){
+      public void print(int[] array){
 
 		 for(int i=0;i<array.length;i++){
 
@@ -21,6 +21,72 @@ public class SortManager {
 
       }
 
+      
+      //merge sort split
+      public void split(int[] listToSort,int[] firstHalf,int[] secondHalf){
+    	  
+    	  int index=0;
+    	  int secondHalfIndex=firstHalf.length;
+    	  
+    	  for(int element:listToSort){
+    		  
+    		  if(index<secondHalfIndex){
+    			  firstHalf[index]=listToSort[index];
+    		  }else{
+    			  secondHalf[index-secondHalfIndex]=listToSort[index];
+    		  }
+    		  
+    		  index++;
+    		  
+    	  }
+    	  
+    	  
+      }
+      
+      //merge sort merge
+      public void merge(int[] array, int[] firstHalf, int[] secondHalf){
+    	  
+    	  int mergeIndex=0;
+    	  int firstHalfIndex=0;
+    	  int secondHalfIndex=0;
+    	  
+    	  while(firstHalfIndex<firstHalf.length && secondHalfIndex<secondHalf.length){
+    		  
+    		  if(firstHalf[firstHalfIndex]<=secondHalf[secondHalfIndex]){
+    			 array[mergeIndex]=firstHalf[firstHalfIndex];
+    			  firstHalfIndex++;
+    			  
+    		  }else if(secondHalf[firstHalfIndex]< firstHalf[secondHalfIndex]){
+    			  array[mergeIndex]=secondHalf[secondHalfIndex]; 
+    			  secondHalfIndex++;
+    		  }
+    		  
+    		  mergeIndex++;
+    		  
+    	  }
+    	  
+    	  if(firstHalfIndex<firstHalf.length){
+    		
+    		  while(mergeIndex<array.length){
+	    		  array[mergeIndex]=firstHalf[firstHalfIndex];
+	    		  
+	    		  mergeIndex++;
+	    		  firstHalfIndex++;
+    		  }
+    	  }
+    	  
+    	  if(secondHalfIndex<secondHalf.length){
+    		  while(mergeIndex < array.length){
+	    		  array[mergeIndex]=secondHalf[secondHalfIndex];
+	    		  mergeIndex++;
+	    		  secondHalfIndex++;
+    		  }	  
+    	  }
+    	      	  
+      }
+      
+      
+      //algorithms
 	   public int[] selectionSort(int[] array){
 
 		   for(int i=0;i<array.length;i++){
@@ -96,6 +162,31 @@ public class SortManager {
 			 return array;
 
 	  }
+	 
+	 public void mergeSort(int[] array){
+		 
+		 if(array.length <= 1){
+			 return;
+		 }
+		 
+		 int mid=array.length/2 + array.length % 2;
+		 //declare first and second half arrays to store halfs of the array variable
+		 int[] firstHalf= new int[mid];
+		 int[] secondHalf=new int[array.length-mid];
+		 
+		 //call split to fill the halfs
+		 split(array, firstHalf, secondHalf);
+		 //call merge sort recursively to each half
+		 mergeSort(firstHalf);
+		 mergeSort(secondHalf);
+		 
+		 //merge everything
+		 merge(array,firstHalf,secondHalf);
+		 
+   	     print(array);
+
+		 
+	 }
 
 
 }
