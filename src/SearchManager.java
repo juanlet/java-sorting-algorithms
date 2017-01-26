@@ -38,7 +38,7 @@ public class SearchManager {
 		
 		
 		
-		if(array.length == 0){
+		if(initialIndex > finalIndex){
 			return -1;
 		}
 		
