@@ -36,12 +36,8 @@ public class SearchManager {
 	
 	public int recursiveBinarySearch(int[] array,int initialIndex,int finalIndex,int valueToSearch){
 		
-		/*if(array.length == 0){
-			return -1;
-		}*/
 		
-		int returnIndex=-1;
-
+		
 		if(array.length == 0){
 			return -1;
 		}
@@ -51,15 +47,15 @@ public class SearchManager {
 		
 		if(array[mid] == valueToSearch){
 			System.out.println("Found the searched value " + valueToSearch + " at position " + mid );
-			returnIndex=mid;
+			 return mid;
 		}else if(array[mid] > valueToSearch){
-			 returnIndex = recursiveBinarySearch(array, initialIndex, mid -1 , valueToSearch);
+			 return recursiveBinarySearch(array, initialIndex, mid -1 , valueToSearch);
 		}else if(array[mid] < valueToSearch){
-			 returnIndex = recursiveBinarySearch(array, mid + 1 , finalIndex, valueToSearch);
+			 return recursiveBinarySearch(array, mid + 1 , finalIndex, valueToSearch);
 		}
 		
+		return -1;
 						
-		return returnIndex;
 	}
 	
 	
