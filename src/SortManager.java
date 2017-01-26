@@ -198,8 +198,7 @@ public class SortManager {
     	 int pivotIndex = partition(listToSort, low, high);
     	 quickSort(listToSort, low, pivotIndex - 1);
     	 quickSort(listToSort, pivotIndex + 1, high);
-    	 
-    	 print(listToSort);
+    
     	 
      }
      
