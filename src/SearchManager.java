@@ -1,3 +1,7 @@
+import java.awt.print.Printable;
+
+import javax.sound.midi.MidiChannel;
+
 
 public class SearchManager {
 
@@ -27,6 +31,35 @@ public class SearchManager {
 		
 		System.out.println("Not Found in " + numberOfChecks + " tries.");
 		return -1;
+	}
+
+	
+	public int recursiveBinarySearch(int[] array,int initialIndex,int finalIndex,int valueToSearch){
+		
+		/*if(array.length == 0){
+			return -1;
+		}*/
+		
+		int returnIndex=-1;
+
+		if(array.length == 0){
+			return -1;
+		}
+		
+				
+		int mid= initialIndex + (finalIndex-initialIndex)/2;
+		
+		if(array[mid] == valueToSearch){
+			System.out.println("Found the searched value " + valueToSearch + " at position " + mid );
+			returnIndex=mid;
+		}else if(array[mid] > valueToSearch){
+			 returnIndex = recursiveBinarySearch(array, initialIndex, mid -1 , valueToSearch);
+		}else if(array[mid] < valueToSearch){
+			 returnIndex = recursiveBinarySearch(array, mid + 1 , finalIndex, valueToSearch);
+		}
+		
+						
+		return returnIndex;
 	}
 	
 	
