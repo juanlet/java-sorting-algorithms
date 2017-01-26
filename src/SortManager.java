@@ -1,3 +1,5 @@
+import javax.swing.tree.VariableHeightLayoutCache;
+
 public class SortManager {
      //helpers
       private void swap(int[] array,int indexA, int indexB){
@@ -100,6 +102,24 @@ public class SortManager {
 			 return array;
 
 	  }
+	
+	 //uses an increment that reduces to half everytime the inner foor loop doesn't produce a swap
+	 public void shellSort(int array[]){
+  	   int jump, i;
+  	   boolean swaped;
+  	   for(jump=array.length/2; jump!=0; jump/=2){
+  	           swaped=true;
+  	           while(swaped){ // While there are at least one swap
+  	                       swaped=false;
+  	                       for(i=jump; i< array.length; i++) // loop the array using the jump
+  	                               if(array[i-jump]>array[i]){ // if they are not sorted using jump
+  	                                     swap(array, i-jump, i);
+  	                                     swaped=true; //the loop continues
+  	                               }
+  	                        }
+  	   }
+  	   print(array);
+  }
 	 
 	 public void mergeSort(int[] array){
 		 
@@ -228,6 +248,8 @@ public class SortManager {
      }
      
      
+    
+         
 
 
 }
