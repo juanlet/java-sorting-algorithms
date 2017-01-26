@@ -17,8 +17,8 @@ public class Main {
 		 
 	    // sortManager.mergeSort(array);
 	    //sortManager.quickSort(array, 0, array.length-1);
-	     sortManager.shellSort(array);
-	     
+	    // sortManager.shellSort(array);
+	   
 		 //searchManager.binarySearch(array2, 1);
 		 
 }
