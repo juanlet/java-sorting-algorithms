@@ -16,8 +16,8 @@ public class Main {
 		 //array=sortManager.insertionSort(array);
 	 
 		 
-	     sortManager.mergeSort(array);
-	    
+	    // sortManager.mergeSort(array);
+	    sortManager.quickSort(array, 0, array.length-1);
 	     
 		 //searchManager.binarySearch(array2, 1);
 		 

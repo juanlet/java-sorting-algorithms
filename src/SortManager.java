@@ -22,69 +22,7 @@ public class SortManager {
       }
 
       
-      //merge sort split
-      public void split(int[] listToSort,int[] firstHalf,int[] secondHalf){
-    	  
-    	  int index=0;
-    	  int secondHalfIndex=firstHalf.length;
-    	  
-    	  for(int element:listToSort){
-    		  
-    		  if(index<secondHalfIndex){
-    			  firstHalf[index]=listToSort[index];
-    		  }else{
-    			  secondHalf[index-secondHalfIndex]=listToSort[index];
-    		  }
-    		  
-    		  index++;
-    		  
-    	  }
-    	  
-    	  
-      }
-      
-      //merge sort merge
-      public void merge(int[] array, int[] firstHalf, int[] secondHalf){
-    	  
-    	  int mergeIndex=0;
-    	  int firstHalfIndex=0;
-    	  int secondHalfIndex=0;
-    	  
-    	  while(firstHalfIndex<firstHalf.length && secondHalfIndex<secondHalf.length){
-    		  
-    		  if(firstHalf[firstHalfIndex]<=secondHalf[secondHalfIndex]){
-    			 array[mergeIndex]=firstHalf[firstHalfIndex];
-    			  firstHalfIndex++;
-    			  
-    		  }else if(secondHalf[firstHalfIndex]< firstHalf[secondHalfIndex]){
-    			  array[mergeIndex]=secondHalf[secondHalfIndex]; 
-    			  secondHalfIndex++;
-    		  }
-    		  
-    		  mergeIndex++;
-    		  
-    	  }
-    	  
-    	  if(firstHalfIndex<firstHalf.length){
-    		
-    		  while(mergeIndex<array.length){
-	    		  array[mergeIndex]=firstHalf[firstHalfIndex];
-	    		  
-	    		  mergeIndex++;
-	    		  firstHalfIndex++;
-    		  }
-    	  }
-    	  
-    	  if(secondHalfIndex<secondHalf.length){
-    		  while(mergeIndex < array.length){
-	    		  array[mergeIndex]=secondHalf[secondHalfIndex];
-	    		  mergeIndex++;
-	    		  secondHalfIndex++;
-    		  }	  
-    	  }
-    	      	  
-      }
-      
+        
       
       //algorithms
 	   public int[] selectionSort(int[] array){
@@ -187,6 +125,110 @@ public class SortManager {
 
 		 
 	 }
+	 
+	  //merge sort split
+     public void split(int[] listToSort,int[] firstHalf,int[] secondHalf){
+   	  
+   	  int index=0;
+   	  int secondHalfIndex=firstHalf.length;
+   	  
+   	  for(int element:listToSort){
+   		  
+   		  if(index<secondHalfIndex){
+   			  firstHalf[index]=listToSort[index];
+   		  }else{
+   			  secondHalf[index-secondHalfIndex]=listToSort[index];
+   		  }
+   		  
+   		  index++;
+   		  
+   	  }
+   	  
+   	  
+     }
+     
+     //merge sort merge
+     public void merge(int[] array, int[] firstHalf, int[] secondHalf){
+   	  
+   	  int mergeIndex=0;
+   	  int firstHalfIndex=0;
+   	  int secondHalfIndex=0;
+   	  
+   	  while(firstHalfIndex<firstHalf.length && secondHalfIndex<secondHalf.length){
+   		  
+   		  if(firstHalf[firstHalfIndex]<=secondHalf[secondHalfIndex]){
+   			 array[mergeIndex]=firstHalf[firstHalfIndex];
+   			  firstHalfIndex++;
+   			  
+   		  }else if(secondHalf[firstHalfIndex]< firstHalf[secondHalfIndex]){
+   			  array[mergeIndex]=secondHalf[secondHalfIndex]; 
+   			  secondHalfIndex++;
+   		  }
+   		  
+   		  mergeIndex++;
+   		  
+   	  }
+   	  
+   	  if(firstHalfIndex<firstHalf.length){
+   		
+   		  while(mergeIndex<array.length){
+	    		  array[mergeIndex]=firstHalf[firstHalfIndex];
+	    		  
+	    		  mergeIndex++;
+	    		  firstHalfIndex++;
+   		  }
+   	  }
+   	  
+   	  if(secondHalfIndex<secondHalf.length){
+   		  while(mergeIndex < array.length){
+	    		  array[mergeIndex]=secondHalf[secondHalfIndex];
+	    		  mergeIndex++;
+	    		  secondHalfIndex++;
+   		  }	  
+   	  }
+   	      	  
+     }
+     
+     public void quickSort(int[] listToSort, int low, int high){
+    	 
+    	 if(low >= high){
+    		 return;
+    	 }
+    	 
+    	 int pivotIndex = partition(listToSort, low, high);
+    	 quickSort(listToSort, low, pivotIndex - 1);
+    	 quickSort(listToSort, pivotIndex + 1, high);
+    	 
+    	 print(listToSort);
+    	 
+     }
+     
+     
+     //quick sort partition
+     public int partition(int[] listToSort, int low, int high){
+    	 int pivot = listToSort[low];
+    	 int l = low;
+    	 int h =high;
+    	 while(l < h){
+    		 while(listToSort[l] <= pivot && l < h){
+    			 l++;
+    		 }
+    		 while(listToSort[h] > pivot){
+    			 h--;
+    		 }
+    		 if(l < h){
+    			 swap(listToSort, l, h);
+    		 }
+    	 }
+    	 swap(listToSort, low, h);
+    	 
+    	 System.out.println("Pivot: " + pivot);
+    	 print(listToSort);
+    	 return h;
+    	 
+     }
+     
+     
 
 
 }
